@@ -1,0 +1,16 @@
+[
+{
+  "modid": "neverlookback",
+  "name": "Never Look Back",
+  "description": "Never Look Back is based on progression while adventuring and evolving technologies, but remember there is only one way",
+  "version": "1.0.0",
+  "mcversion": "1.10.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["sokratis12GR"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -1,0 +1,23 @@
+#en_US.lang File
+
+#CREATIVE TABS
+itemGroup.neverlookback.never_look_back=Never Look Back
+
+#KEYBINDS
+key.categories.never_look_back=Never Look Back
+key.never_look_back=Toggle Never Look Back GUI
+
+#ITEMS
+item.neverlookback.item_none.name=None
+item.neverlookback.item_normal.name=Normal
+item.neverlookback.item_advanced.name=Advanced
+item.neverlookback.item_expert.name=Expert
+
+#BLOCKS
+tile.neverlookback.block_none.name=None
+tile.neverlookback.block_normal.name=Normal
+tile.neverlookback.block_advanced.name=Advanced
+tile.neverlookback.block_expert.name=Expert
+
+#CONFIG GUI
+gui.neverlookback.config.title=Never Look Back Configuration

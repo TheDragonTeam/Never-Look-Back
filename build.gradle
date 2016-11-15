@@ -1,0 +1,143 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'maven'
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+repositories {
+    maven { // Tesla repo
+        url 'http://maven.epoxide.xyz'
+    }
+    maven { // JEI repo
+        name "JEI"
+        url "http://dvs1.progwml6.com/files/maven"
+    }
+    maven { //The repo to get TiC
+        url 'http://dvs1.progwml6.com/files/maven'
+    }
+    maven { // HWYLA repo
+        url "http://tehnut.info/maven"
+    }
+
+}
+
+version = mc_version + '-' + version_major + '.' + version_minor + '.' + version_patch + '.' + version_build
+group = package_group
+archivesBaseName = mod_id
+
+minecraft {
+    version = "${mc_version}-${forge_version}"
+    runDir = "run"
+    makeObfSourceJar = true
+    useDepAts = true
+
+    if (project.hasProperty('mappings_version'))
+        mappings = project.mappings_version
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+jar {
+    manifest {
+        attributes 'FMLAT': 'neverlookback_at.cfg'
+    }
+    classifier = ''
+    manifest.mainAttributes(
+            "Built-By": "${author}",
+            "Implementation-Title": project.name,
+            "Implementation-Version": project.version,
+            "Built-On": "${mc_version}-${forge_version}"
+    )
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier = 'sources'
+}
+
+task apiJar(type: Jar) {
+    from sourceSets.main.allSource
+    from sourceSets.main.output
+    include 'net/thedragonteam/armorplus/api/**/*'
+    classifier = 'api'
+}
+
+task devJar(type: Jar) {
+    classifier = "dev"
+    from sourceSets.main.output
+}
+
+
+task deobfJar(type: Jar) { // Generate deobfuscated
+    from sourceSets.main.output
+    classifier = 'deobf'
+}
+tasks.build.dependsOn('deobfJar')
+artifacts {
+    archives deobfJar
+}
+
+artifacts {
+    archives sourcesJar
+    archives apiJar
+    archives devJar
+    archives deobfJar
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include '**/*.info'
+        include '**/*.properties'
+
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude '**/*.info'
+        exclude '**/*.properties'
+    }
+
+    rename '(.+_at.cfg)', 'META-INF/$1'
+}
+
+dependencies {
+    deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
+    compile "net.darkhax.tesla:Tesla:${mc_version}-${tesla_version}"
+    deobfCompile "slimeknights:TConstruct:${mc_version}-${tconstruct_version}"
+    deobfCompile "slimeknights.mantle:Mantle:${mc_version}-${mantle_version}"
+    deobfCompile "mcp.mobius.waila:Waila:${hwyla_version}"
+}
+
+processResources {
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        // replace version and mcversion
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
+
+    // copy everything else, thats not the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
