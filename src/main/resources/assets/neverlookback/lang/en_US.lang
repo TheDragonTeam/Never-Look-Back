@@ -12,6 +12,10 @@ item.neverlookback.item_none.name=None
 item.neverlookback.item_normal.name=Normal
 item.neverlookback.item_advanced.name=Advanced
 item.neverlookback.item_expert.name=Expert
+item.neverlookback.crystal_black.name=Black Crystal
+item.neverlookback.crystal_white.name=White Crystal
+item.neverlookback.crystal_blue.name=Blue Crystal
+item.neverlookback.crystal_red.name=Red Crystal
 
 #BLOCKS
 tile.neverlookback.block_none.name=None

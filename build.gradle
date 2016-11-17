@@ -16,23 +16,22 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 
 repositories {
-    maven { // Tesla repo
-        url 'http://maven.epoxide.xyz'
-    }
-    maven { // JEI repo
-        name "JEI"
-        url "http://dvs1.progwml6.com/files/maven"
-    }
-    maven { //The repo to get TiC
-        url 'http://dvs1.progwml6.com/files/maven'
-    }
-    maven { // HWYLA repo
-        url "http://tehnut.info/maven"
-    }
-
+    //   maven { // Tesla repo
+    //        url 'http://maven.epoxide.xyz'
+    //}
+    //    maven { // JEI repo
+    // name "JEI"
+    // url "http://dvs1.progwml6.com/files/maven"
+    //}
+    // maven { //The repo to get TiC
+    //     url 'http://dvs1.progwml6.com/files/maven'
+    // }
+    // maven { // HWYLA repo
+    //     url "http://tehnut.info/maven"
+    // }
 }
 
-version = mc_version + '-' + version_major + '.' + version_minor + '.' + version_patch + '.' + version_build
+version = mc_version + '-' + version_major + '.' + version_minor + '.' + version_patch
 group = package_group
 archivesBaseName = mod_id
 
@@ -116,11 +115,11 @@ processResources {
 }
 
 dependencies {
-    deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
-    compile "net.darkhax.tesla:Tesla:${mc_version}-${tesla_version}"
-    deobfCompile "slimeknights:TConstruct:${mc_version}-${tconstruct_version}"
-    deobfCompile "slimeknights.mantle:Mantle:${mc_version}-${mantle_version}"
-    deobfCompile "mcp.mobius.waila:Waila:${hwyla_version}"
+//    deobfCompile "mezz.jei:jei_${mc_version}:${jei_version}"
+//    compile "net.darkhax.tesla:Tesla:${mc_version}-${tesla_version}"
+//    deobfCompile "slimeknights:TConstruct:${mc_version}-${tconstruct_version}"
+//    deobfCompile "slimeknights.mantle:Mantle:${mc_version}-${mantle_version}"
+//    deobfCompile "mcp.mobius.waila:Hwyla:${hwyla_version}"
 }
 
 processResources {

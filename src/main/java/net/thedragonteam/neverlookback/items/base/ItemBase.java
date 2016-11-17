@@ -1,7 +1,6 @@
 package net.thedragonteam.neverlookback.items.base;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -18,16 +17,18 @@ public class ItemBase extends Item {
     private String name;
 
     public ItemBase(ItemTypes typesIn) {
-        this.types = typesIn;
-        name = typesIn.getName();
-        setRegistryName(name);
-        setUnlocalizedName(setName(name));
-        GameRegistry.register(this);
+        this(typesIn.getName());
     }
 
-    @Override
-    public CreativeTabs getCreativeTab() {
-        return null;
+    public ItemBase(String nameIn) {
+        this(nameIn, 0);
+    }
+
+    public ItemBase(String nameIn, int durability) {
+        setMaxDamage(durability);
+        setRegistryName(nameIn);
+        setUnlocalizedName(setName(nameIn));
+        GameRegistry.register(this);
     }
 
     @SideOnly(Side.CLIENT)

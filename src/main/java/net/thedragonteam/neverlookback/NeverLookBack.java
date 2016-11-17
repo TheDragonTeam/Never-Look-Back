@@ -28,7 +28,7 @@ public class NeverLookBack {
      * Updates every time the mod updates minecraft version,
      * Updates MAJOR with 1 after each version upgrade
      */
-    public static final String MC_VERSION = "1.10.2";
+    public static final String MC_VERSION = "1.1";
     /**
      * Updates every MAJOR change,
      * never resets
@@ -50,7 +50,7 @@ public class NeverLookBack {
     public static final String VERSION = NeverLookBack.MC_VERSION + "-" + NeverLookBack.MAJOR + "." + NeverLookBack.MINOR + "." + NeverLookBack.PATCH + "";
     public static final String MODID = "neverlookback";
     public static final String MODNAME = "Never Look Back";
-    public static final String LIB_VERSION = "1.10.2-1.0.3.0";
+    public static final String LIB_VERSION = "1.1-2.0.0";
     public static final String DEPEND = "required-after:thedragonlib@[" + NeverLookBack.LIB_VERSION + ",);";
     public static final String CLIENT_PROXY = "net.thedragonteam.neverlookback.proxy.ClientProxy";
     public static final String SERVER_PROXY = "net.thedragonteam.neverlookback.proxy.ServerProxy";
@@ -59,7 +59,7 @@ public class NeverLookBack {
     @SidedProxy(clientSide = CLIENT_PROXY, serverSide = SERVER_PROXY)
     public static CommonProxy proxy;
 
-    public static CreativeTabs nmTab = new NLBTab(CreativeTabs.getNextID(), NeverLookBack.MODID, setName("never_look_back"), 0);
+    public static CreativeTabs neverLookBackTab = new NLBTab(CreativeTabs.getNextID(), NeverLookBack.MODID, setName("never_look_back"), 0);
 
     @Mod.Instance(MODID)
     public static NeverLookBack instance;

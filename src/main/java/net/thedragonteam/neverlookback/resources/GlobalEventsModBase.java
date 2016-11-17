@@ -5,6 +5,7 @@
 package net.thedragonteam.neverlookback.resources;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
@@ -22,6 +23,8 @@ public class GlobalEventsModBase {
     @SubscribeEvent
     public void attachCapabilities(AttachCapabilitiesEvent<?> event) {
         if (event.getObject() instanceof EntityPlayer)
+            event.addCapability(new ResourceLocation(NeverLookBack.MODID, "progression"), new Provider());
+        if (event.getObject() instanceof EntityZombie)
             event.addCapability(new ResourceLocation(NeverLookBack.MODID, "progression"), new Provider());
     }
 

@@ -64,7 +64,7 @@ public class BlockBase extends Block {
         this.setHarvestLevel(tool, harvestLevel);
         this.setLightLevel(lightLevel);
         this.setLightOpacity(lightOpacity);
-        setCreativeTab(NeverLookBack.nmTab);
+        setCreativeTab(NeverLookBack.neverLookBackTab);
         GameRegistry.register(this);
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
